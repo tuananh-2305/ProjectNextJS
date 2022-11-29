@@ -9,5 +9,8 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res.status(200).json({ name: "John Doe" });
+  if (req.method !== "GET") {
+    return res.status(404).json({ name: "Method not support" });
+  }
+  res.status(200).json({ name: "Get lists products" });
 }
